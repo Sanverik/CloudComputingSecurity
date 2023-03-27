@@ -1,0 +1,45 @@
+// TERRAFORM
+// Source: https://github.com/tfutils/tfenv#manual
+git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
+echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
+
+
+// Install certain tf version
+tfenv install 1.2.4
+tfenv use 1.2.4
+
+// Check current version
+terraform version
+
+
+// HELM
+// Source: https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+sudo apt-get install apt-transport-https --yes
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm#
+
+// Check current version
+helm version
+
+// MINIKUBE
+// Source: https://minikube.sigs.k8s.io/docs/start/
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+// Check current version
+helm version
+
+minikube delete
+minikube start --container-runtime=docker --memory 4096 --cpus 2
+minikube status
+minikube dashboard --url
+
+Links:
+https://minikube.sigs.k8s.io/docs/handbook/config/#runtime-configuration
+
+// K8S
+
+kubectl get services -n keycloak
+kubectl -n keycloak port-forward service/keycloak 8080:80
