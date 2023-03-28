@@ -1,5 +1,12 @@
+# Commands to configure keycloak:
+- terraform init
+- terraform apply (type `yes` inside a prompt)
+
+# For checking content of JWT tokens
 # https://jwt.io/
 
+# TEST PASSWORD GRANT TYPE
+# Variables: realm name, client id, client secret, username, password
 curl -X POST \
   'http://localhost:8080/auth/realms/test-realm/protocol/openid-connect/token' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -10,6 +17,8 @@ curl -X POST \
   -d 'password=123SECURE@'
 
 
+# CLIENT CREDENTIALS GRANT TYPE
+# Variables: realm name, client id, client secret
 curl -X POST \
   'http://localhost:8080/auth/realms/test-realm/protocol/openid-connect/token' \
   -H 'Content-Type: application/x-www-form-urlencoded' \

@@ -1,8 +1,10 @@
+// https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/realm
 resource "keycloak_realm" "test_realm" {
   realm   = "test-realm"
   enabled = true
 }
 
+// https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/openid_client
 resource "keycloak_openid_client" "test_client" {
   realm_id      = keycloak_realm.test_realm.id
   client_id     = "test-client"
@@ -13,7 +15,7 @@ resource "keycloak_openid_client" "test_client" {
 #  service_accounts_enabled     = true
 }
 
-// http://localhost:8080/auth/realms/test-realm/account
+// https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/user
 resource "keycloak_user" "test_user" {
   realm_id  = keycloak_realm.test_realm.id
   username  = "test-user"
@@ -22,6 +24,7 @@ resource "keycloak_user" "test_user" {
   last_name = "User"
   enabled   = true
 
+  // http://localhost:8080/auth/realms/test-realm/account
   initial_password {
     value     = "123SECURE@"
     temporary = true

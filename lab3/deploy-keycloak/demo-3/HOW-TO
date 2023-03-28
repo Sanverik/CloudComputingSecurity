@@ -1,0 +1,5 @@
+# Commands to deploy keycloak:
+- terraform init
+- terraform apply (type `yes` inside a prompt)
+
+kubectl -n keycloak port-forward service/keycloak-http 8080:80

@@ -5,6 +5,5 @@ helm install keycloak codecentric/keycloakx --wait --namespace demo-2 --values .
 helm list -A
 helm uninstall keycloak --wait --namespace demo-2
 
-
 # Optional
 https://k9scli.io/
