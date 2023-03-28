@@ -1,0 +1,17 @@
+minikube start --vm=true --memory=4096 --cpus=2
+
+# https://kubernetes.io/docs/tasks/tools/#kubectl
+kubectl config use-context minikube
+# Optional
+https://github.com/ahmetb/kubectx
+
+
+# https://github.com/keycloak/keycloak-quickstarts/tree/latest/kubernetes-examples
+wget https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes-examples/keycloak.yaml
+
+kubectl create ns demo-1
+kubectl -n demo-1 apply -f keycloak.yaml
+kubectl -n demo-1 get service
+
+kubectl -n demo-1 port-forward svc/keycloak 7777:8080
+

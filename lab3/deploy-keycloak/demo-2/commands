@@ -1,0 +1,10 @@
+kubectl create ns demo-2
+
+helm repo add codecentric https://codecentric.github.io/helm-charts
+helm install keycloak codecentric/keycloakx --wait --namespace demo-2 --values ./values.yaml
+helm list -A
+helm uninstall keycloak --wait --namespace demo-2
+
+
+# Optional
+https://k9scli.io/

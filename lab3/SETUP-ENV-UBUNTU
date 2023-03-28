@@ -1,3 +1,9 @@
+Needed tools:
+- terraform
+- helm
+- minikube (+ docker)
+- kubectl
+
 // TERRAFORM
 // Source: https://github.com/tfutils/tfenv#manual
 git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
@@ -32,14 +38,19 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 helm version
 
 minikube delete
-minikube start --container-runtime=docker --memory 4096 --cpus 2
+minikube start --container-runtime=docker --memory 4096 --cpus 2 --kubernetes-version=v1.24.4
 minikube status
 minikube dashboard --url
+minikube addons enable metrics-server
 
 Links:
 https://minikube.sigs.k8s.io/docs/handbook/config/#runtime-configuration
 
 // K8S
+// https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
 
 kubectl get services -n keycloak
-kubectl -n keycloak port-forward service/keycloak 8080:80
+kubectl -n keycloak port-forward service/keycloak-http 8080:80

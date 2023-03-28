@@ -6,41 +6,20 @@ resource "kubernetes_namespace" "keycloak" {
   }
 }
 
-// https://bitnami.com/stack/keycloak/helm
+// https://github.com/codecentric/helm-charts/tree/master/charts/keycloak
 // https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release
 resource "helm_release" "keycloak" {
   name       = "keycloak"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "https://codecentric.github.io/helm-charts"
   chart      = "keycloak"
   namespace  = kubernetes_namespace.keycloak.metadata[0].name
-  version    = "13.1.3"
+  version    = "18.4.0"
 
-  // https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
-  set {
-    name  = "auth.adminUser"
-    value = "admin"
-  }
-
-  set {
-    name  = "auth.adminPassword"
-    value = "admin"
-  }
-
-  set {
-    name  = "httpRelativePath"
-    value = "/auth/"
-  }
-
-  set {
-    name  = "global.storageClass"
-    value = "standard"
-  }
-
-  set {
-    name  = "readinessProbe.initialDelaySeconds"
-    value = 120
-  }
-
+  // https://github.com/codecentric/helm-charts/blob/master/charts/keycloak/values.yaml
+#  set {
+#    name  = ""
+#    value = ""
+#  }
 
   depends_on = [kubernetes_namespace.keycloak]
 }
