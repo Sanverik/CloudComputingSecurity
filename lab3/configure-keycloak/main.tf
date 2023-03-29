@@ -11,8 +11,8 @@ resource "keycloak_openid_client" "test_client" {
   name          = "Test Client"
   access_type   = "CONFIDENTIAL"
   client_secret = "1234567890secret"
-#  direct_access_grants_enabled = true
-#  service_accounts_enabled     = true
+  direct_access_grants_enabled = true
+  service_accounts_enabled     = true
 }
 
 // https://registry.terraform.io/providers/mrparkers/keycloak/latest/docs/resources/user

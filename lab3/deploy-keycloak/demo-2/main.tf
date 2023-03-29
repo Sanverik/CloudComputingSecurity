@@ -16,10 +16,12 @@ resource "helm_release" "keycloak" {
   version    = "18.4.0"
 
   // https://github.com/codecentric/helm-charts/blob/master/charts/keycloak/values.yaml
-#  set {
-#    name  = ""
-#    value = ""
-#  }
+
+    set {
+    name  = "image.tag"
+    value = "19.0.1-legacy"
+  }
+
 
   depends_on = [kubernetes_namespace.keycloak]
 }

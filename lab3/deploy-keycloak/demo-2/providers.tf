@@ -11,3 +11,5 @@ provider "helm" {
     config_path              = "~/.kube/config"
   }
 }
+
+kubectl -n demo-2 port-forward svc/keycloak-http 8080:80
