@@ -1,9 +1,5 @@
-kubectl create ns demo-2
+# Commands to deploy keycloak:
+- terraform init
+- terraform apply (type `yes` inside a prompt)
 
-helm repo add codecentric https://codecentric.github.io/helm-charts
-helm install keycloak codecentric/keycloakx --wait --namespace demo-2 --values ./values.yaml
-helm list -A
-helm uninstall keycloak --wait --namespace demo-2
-
-# Optional
-https://k9scli.io/
+kubectl -n keycloak port-forward service/keycloak-http 8080:80

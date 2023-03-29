@@ -2,7 +2,7 @@
 // https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace
 resource "kubernetes_namespace" "keycloak" {
   metadata {
-	name = "keycloak"
+	name = "demo-2"
   }
 }
 

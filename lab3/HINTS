@@ -9,8 +9,9 @@ Needed tools:
 git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
 echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
 
-
 // Install certain tf version
+
+tfenv list-remote
 tfenv install 1.2.4
 tfenv use 1.2.4
 
@@ -35,7 +36,7 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 // Check current version
-helm version
+minikube version
 
 minikube delete
 minikube start --container-runtime=docker --memory 4096 --cpus 2 --kubernetes-version=v1.24.4
